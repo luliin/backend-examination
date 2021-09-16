@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-examination-deployment
+  namespace: apps
+  labels:
+    app: backend-examination
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-examination
+  template:
+    metadata:
+      labels:
+        app: backend-examination
+    spec:
+      containers:
+        - name: backend-examination
+          image: luliin/backend-examination:0.0.1
+          imagePullPolicy: IfNotPresent
